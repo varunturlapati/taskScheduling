@@ -1,10 +1,10 @@
-package taskScheduling
+package TaskScheduling
 
 import "fmt"
 
 type Server struct {
-	Name string
-	TaskList Tasks
+	Name         string
+	TaskList     Tasks
 	TotalRuntime uint32
 }
 

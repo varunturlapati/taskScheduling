@@ -1,4 +1,4 @@
-package taskScheduling
+package TaskScheduling
 
 import "fmt"
 
