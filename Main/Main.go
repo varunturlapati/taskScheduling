@@ -54,4 +54,9 @@ func main() {
 	}
 
 	ts.DistributeTasks(servers, tasks, policy)
+	jsonBytes, err := json.Marshal(servers)
+	if err != nil {
+		fmt.Printf("Error generating output file allocation.json")
+	}
+	ioutil.WriteFile("allocation.json", jsonBytes, os.FileMode(777))
 }

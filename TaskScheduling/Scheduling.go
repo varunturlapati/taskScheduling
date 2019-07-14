@@ -26,6 +26,7 @@ func DistributeTasks(S Servers, T Tasks, policy Policy) {
 	}
 }
 
+//Given servers and tasks, tasks are assigned to servers in a round robin fashion
 func RoundRobinImpl(servers Servers, tasks Tasks) {
 	var srvInd = 0
 	for _, task := range(tasks) {
@@ -33,12 +34,13 @@ func RoundRobinImpl(servers Servers, tasks Tasks) {
 		if err != nil {
 			fmt.Printf("Could not assign Task %s to Server %s", task, servers[srvInd])
 		}
-
 		srvInd = (srvInd + 1) % len(servers)
 	}
 	fmt.Printf("The allocation is: %s", servers)
 }
 
+//Given servers and tasks, tasks are sorted and then assigned to servers in a round robin fashion but also changing
+//direction when one end of the servers is reached, and so on
 func SortAndZigZagImpl(servers Servers, tasks Tasks) {
 	var srvInd = 0
 	tasks.Sort()
@@ -55,6 +57,7 @@ func SortAndZigZagImpl(servers Servers, tasks Tasks) {
 	fmt.Printf("The allocation is:\n%s\n", servers)
 }
 
+//Given servers and tasks, tasks are first sorted (ascending) and then assigned to servers in a round robin fashion
 func SortAndRoundRobinImpl(servers Servers, tasks Tasks) {
 	var srvInd = 0
 	tasks.Sort()
@@ -63,7 +66,6 @@ func SortAndRoundRobinImpl(servers Servers, tasks Tasks) {
 		if err != nil {
 			fmt.Printf("Could not assign Task %s to Server %s", task, servers[srvInd])
 		}
-
 		srvInd = (srvInd + 1) % len(servers)
 	}
 	fmt.Printf("The allocation is: %s", servers)
